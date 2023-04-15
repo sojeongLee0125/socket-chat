@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.10'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.distributed_system'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // server
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // jpa
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'//websocket
+    implementation 'org.springframework.session:spring-session-core:2.5.6' //session
+    implementation 'com.google.code.gson:gson:2.9.0' // gson
+    //implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'com.h2database:h2'//h2
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    //testImplementation 'org.springframework.security:spring-security-test'//spring security
+
+    //view
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.webjars:sockjs-client:1.1.2' // sockjs
+    implementation 'org.webjars:stomp-websocket:2.3.3-1' // stomp
+    implementation 'org.webjars.bower:bootstrap:4.3.1'
+    implementation 'org.webjars.bower:vue:2.5.16'
+    implementation 'org.webjars.bower:axios:0.17.1'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
